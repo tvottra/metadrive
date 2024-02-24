@@ -17,14 +17,15 @@ from metadrive.component.sensors.rgb_camera import RGBCamera
 from metadrive.constants import HELP_MESSAGE
 
 if __name__ == "__main__":
-    config = dict(use_render=True, # if you have a screen and OpenGL suppor, you can set use_render=True to use 3D rendering  
-                   manual_control=True, # we usually manually control the car to test environment
-                   log_level=logging.CRITICAL)
-    
+    config = dict(use_render=True,
+                  # if you have a screen and OpenGL support, you can set use_render=True to use 3D rendering
+                  manual_control=True,  # we usually manually control the car to test environment
+                  log_level=logging.CRITICAL)
+
     env = envs.SidewalkEnv(config)
     env.reset()
     try:
         while True:
-             obs, reward, termination, truncate, info = env.step(env.action_space.sample())
+            obs, reward, termination, truncate, info = env.step(env.action_space.sample())
     finally:
         env.close()
